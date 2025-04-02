@@ -25,6 +25,8 @@ function draw() {
         img.pixels[i + 3] = alpha;
 
 
+
+
     }
     img.updatePixels();
 }
