@@ -2,7 +2,7 @@ let img;
 let sortedImg;
 
 function preload() {
-    img = loadImage("../images/image.png"); // Bild ins Projektverzeichnis legen
+    img = loadImage("../images/image.png"); // Bild laden
 }
 
 function setup() {
@@ -15,6 +15,7 @@ function setup() {
 
     let pixelsArray = [];
 
+    // Alle Pixel in ein Array einfügen
     for (let y = 0; y < img.height; y++) {
         for (let x = 0; x < img.width; x++) {
             let index = (x + y * img.width) * 4;
@@ -23,14 +24,17 @@ function setup() {
             let b = img.pixels[index + 2];
             let a = img.pixels[index + 3];
 
+            // Berechnung der Helligkeit als Durchschnitt der RGB-Werte
             let lightness = (r + g + b) / 3;
 
             pixelsArray.push({ r, g, b, a, lightness });
         }
     }
 
-    pixelsArray.sort((a, b) => a.lightness - b.lightness); // dunkel nach hell
+    // Array nach Helligkeit sortieren (dunkel nach hell)
+    pixelsArray.sort((a, b) => a.lightness - b.lightness);
 
+    // Sortierte Pixel wieder in das Bild einfügen
     for (let i = 0; i < pixelsArray.length; i++) {
         let x = i % img.width;
         let y = Math.floor(i / img.width);
@@ -43,5 +47,5 @@ function setup() {
     }
 
     sortedImg.updatePixels();
-    image(sortedImg, 0, 0);
+    image(sortedImg, 0, 0); // Das sortierte Bild anzeigen
 }
