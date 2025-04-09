@@ -48,4 +48,5 @@ function setup() {
 
     sortedImg.updatePixels();
     image(sortedImg, 0, 0); // Das sortierte Bild anzeigen
+
 }
