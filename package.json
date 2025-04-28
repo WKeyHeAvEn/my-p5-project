@@ -1,4 +1,15 @@
 {
+  "type": "module",
+  "scripts": {
+    "test": "mocha \"tests/**/*.test.js\""
+  },
+  "devDependencies": {
+    "cypress": "^14.3.2",
+    "mocha": "^11.1.0"
+  },
+
+
+
   "name": "my-p5-project",
   "version": "1.0.0",
   "description": "",
@@ -8,9 +19,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^14.3.2",
-    "mocha": "^11.1.0"
-  }
+  "license": "ISC"
 }
