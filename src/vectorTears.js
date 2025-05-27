@@ -9,12 +9,8 @@ let vectLineList = [];
 
 function setup() {
     createCanvas(screenWidth, screenHeight);
-    background(255);
-    stroke(0);
-
-    distX = width / gridWidth + 1;
-    distY = height / gridHeight + 1;
-
+    distX = width / gridWidth;
+    distY = height / gridHeight;
     reactorPosition = createVector(0, 0);
 
     for (let i = 0; i < gridWidth; i++) {
@@ -22,12 +18,14 @@ function setup() {
             vectLineList.push(new VectorLine(i * distX, j * distY));
         }
     }
+
+    background(255);
 }
 
 function draw() {
     background(255);
-    for (let i = 0; i < vectLineList.length; i++) {
-        vectLineList[i].show(reactorPosition);
+    for (let line of vectLineList) {
+        line.show(reactorPosition);
     }
 }
 
@@ -38,51 +36,36 @@ function mouseMoved() {
 
 class VectorLine {
     constructor(x, y) {
-        this._vector = createVector(0, 5);
         this._pos = createVector(x, y);
-        this._vector.add(this._pos);
-        this.reactorScaler = 0.07;
+        this.reactorScaler = 0.05;
     }
 
     show(reactor) {
-        this._reactor = reactor.copy();
-        this.reactorDistance = dist(this._reactor.x, this._reactor.y, this._pos.x, this._pos.y);
-        this.scaler = this.reactorDistance * this.reactorScaler;
+        let direction = p5.Vector.sub(reactor, this._pos);
+        let distance = direction.mag();
+        direction.normalize();
+        direction.mult(distance * this.reactorScaler);
 
-        // Richtung vom Punkt zum Reaktor
-        this._reactor.sub(this._pos);
-        this._vector = this._reactor.copy();
-        this._vector.normalize();
-        this._vector.rotate(PI / 4);
-        this._vector.mult(this.scaler);
-        this._vector.add(this._pos); // Nur einmal skalieren und dann verschieben
+        // Drehung für interessante Formen
+        let rotated = direction.copy().rotate(PI / 4);
 
-        // Berechnung der weiteren Punkte für Form
-        this._pointTwo = this._vector.copy();
-        this._pointTwo.rotate(PI / 2);
-        this._pointTwo.mult(8);
-
-        this._pointTree = this._pointTwo.copy();
-        this._pointTree.rotate(PI / 2);
-
-        this._pointFour = this._pointTree.copy();
-        this._pointFour.rotate(PI / 2);
-
-        this._pointTwo.add(this._pos);
-        this._pointTree.add(this._pos);
-        this._pointFour.add(this._pos);
+        // Weitere Punkte im Kreis
+        let p1 = p5.Vector.add(this._pos, rotated);
+        let p2 = p5.Vector.add(this._pos, rotated.copy().rotate(HALF_PI));
+        let p3 = p5.Vector.add(this._pos, rotated.copy().rotate(PI));
+        let p4 = p5.Vector.add(this._pos, rotated.copy().rotate(PI + HALF_PI));
 
         noStroke();
         fill(0);
 
         beginShape();
-        curveVertex(this._vector.x, this._vector.y);
-        curveVertex(this._vector.x, this._vector.y);
-        curveVertex(this._pointTwo.x, this._pointTwo.y);
-        curveVertex(this._pointTree.x, this._pointTree.y);
-        curveVertex(this._pointFour.x, this._pointFour.y);
-        curveVertex(this._vector.x, this._vector.y);
-        curveVertex(this._vector.x, this._vector.y);
+        curveVertex(p1.x, p1.y);
+        curveVertex(p1.x, p1.y);
+        curveVertex(p2.x, p2.y);
+        curveVertex(p3.x, p3.y);
+        curveVertex(p4.x, p4.y);
+        curveVertex(p1.x, p1.y);
+        curveVertex(p1.x, p1.y);
         endShape();
     }
 }
