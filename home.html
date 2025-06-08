@@ -4,48 +4,62 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Meine p5.js Sketches</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
         }
 
         nav {
-            background-color: #333;
-            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #2a2a40, #1e1e2f);
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ffca28;
         }
 
         .nav-links {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
             list-style: none;
-            margin: 0;
             padding: 0;
+            margin: 0 auto;
+            max-width: 1000px;
         }
 
         .nav-links li {
-            margin: 0.5rem;
+            text-align: center;
         }
 
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
             display: block;
-            border-radius: 4px;
-            transition: background 0.3s;
+            background-color: #292944;
+            color: #fff;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .nav-links a:hover {
-            background-color: #555;
+            background-color: #ffca28;
+            color: #1e1e2f;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 600px) {
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
+            .nav-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -54,26 +68,27 @@
 <body>
 
     <nav>
+        <div class="nav-title">Meine p5.js Sketches</div>
         <ul class="nav-links">
-            <li><a href="circles.html">circles</a></li>
-            <li><a href="GameofLive.html">Game of live</a></li>
-            <li><a href="himmelsrichtungen.html">himmelsrichtungen</a></li>
-            <li><a href="markovChain.html">markov chain</a></li>
-            <li><a href="index.html">sketch</a></li>
-            <li><a href="sketchGlitch.html">sketchglitch</a></li>
-            <li><a href="indexpixel.html">sketchpixel</a></li>
-            <li><a href="vector.html">vector normal</a></li>
-            <li><a href="vectorTears.html">vector with tears</a></li>
+            <li><a href="circles.html">Circles</a></li>
+            <li><a href="GameofLive.html">Game of Life</a></li>
+            <li><a href="himmelsrichtungen.html">Himmelsrichtungen</a></li>
+            <li><a href="markovChain.html">Markov Chain</a></li>
+            <li><a href="index.html">Sketch</a></li>
+            <li><a href="sketchGlitch.html">Sketch Glitch</a></li>
+            <li><a href="indexpixel.html">Sketch Pixel</a></li>
+            <li><a href="vector.html">Vector Normal</a></li>
+            <li><a href="vectorTears.html">Vector with Tears</a></li>
             <li><a href="mandelbrot.html">Mandelbrot</a></li>
             <li><a href="dataVisualisation.html">Data Visualisation</a></li>
-            <li><a href="algorithmFonts.html">Fonts algorithm</a></li>
-            <li><a href="perlinNoise.html">Perlin noise</a></li>
-            <li><a href="music.html">Waves Collaps Function</a></li>
-            <li><a href="l-systems.html">L-systems</a></li>
-            <li><a href="abstract.html">abstract cricles</a></li>
-            <li><a href="dithering.html">dithering effect</a></li>
-            <li><a href="UlamSpiral.html">Ulam spiral</a></li>
-            <li><a href="bresenhemsAlgorithm.html">bresen-hems alghoritmus</a></li>
+            <li><a href="algorithmFonts.html">Fonts Algorithm</a></li>
+            <li><a href="perlinNoise.html">Perlin Noise</a></li>
+            <li><a href="music.html">Music Visualizer</a></li>
+            <li><a href="l-systems.html">L-Systems</a></li>
+            <li><a href="abstract.html">Abstract Circles</a></li>
+            <li><a href="dithering.html">Dithering Effect</a></li>
+            <li><a href="UlamSpiral.html">Ulam Spiral</a></li>
+            <li><a href="bresenhemsAlgorithm.html">Bresenham-Algorithmus</a></li>
             <li><a href="BezierCurve.html">Bezier Curve</a></li>
         </ul>
     </nav>
